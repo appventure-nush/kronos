@@ -1,0 +1,7 @@
+Get Calendar to be working
+Get Microsoft API working
+Get Google API working
+Get Google to approve the API use
+Get Parsing calendars working
+Get UI to work with mobile devices
+Get more customizable UI in the settings

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheet/calendar.css" ></link>
+    <link rel="stylesheet" type="text/css" href="./stylesheet/nav.css"></link>
+    
+</head>
+<body>
+    <!-- <navbar> -->
+        <nav>
+            <ul>
+
+            </ul>
+        </nav>
+    <!-- Calendar here -->
+    <div class="calendarContainer" id="mainCalendarContainer">
+        <div class="calCon">
+            
+            <div class="calHead">
+                <div class="yearHead">
+                    <button onclick="calendar"></button>
+                    <h3 id="yearDisplay"></h3>
+                    <button onclick="calendar"></button>
+                </div>
+                <div class="monthHead">
+                    <button onclick="calendarPrevMonth()"></button>
+                    <div class="month">
+                        <h1 id="monthDisplay"></h1>
+                    </div>
+                    <button onclick="calendarNextMonth()"></button>
+                </div>
+                
+            </div>
+            <div class="calBody">
+                <div class="weekdays">
+                    <ul class="wdlist">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                        
+                    </ul>
+                </div>
+                <div class="days">
+                    <ul id="dayList"></ul>
+                </div>
+            </div>
+                
+            </div>
+            <script src="./../script/calendar.js"></script>
+        </body>
+    </div>
+    <!-- <link href="./html/testcalendar.html" rel="import"/> -->
+    <!-- <object type="text/html" data="./html/testcalendar.html"></object> -->
+ 
+    
+    <script src="./script/calendar.js"></script>
+</body>
+</html>
