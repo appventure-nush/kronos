@@ -3,7 +3,10 @@
 function generate(date) { // genedate(rate)
   
   // const spam yay
-  const sidebar = document.querySelector("div[sidebar]"); // not using ID for fun
+  const sidebar = document.querySelector("aside"); // not using IDs for fun
+  const div = document.querySelector("div");
+  const h1 = document.querySelector("h1");
+  const p = document.querySelector("p");
   const table = document.querySelector("table");
   const thead = document.querySelector("thead");
   const tbody = document.querySelector("tbody");
@@ -35,6 +38,17 @@ function generate(date) { // genedate(rate)
       td.innerHTML = `${number}`;
     }
   }
+
+  tr = document.createElement("tr");
+  thead.appendChild(tr);
+  for (let i = 0; i < 7; i++) {
+    td = document.createElement("th"); // not actually td shhh
+    tr.appendChild(td);
+    td.innerHTML = "mtwtfss"[i];
+  }
+
+  h1.innerHTML = "hi"; // hi = h1
+  p.textContent = "this should look better tomorrow";
   
 };
 
