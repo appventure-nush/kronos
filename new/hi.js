@@ -74,7 +74,7 @@ function generate(date) { // genedate(rate)
   }
 
   h1.innerHTML = "hi"; // h1 = hi
-  p.textContent = "this should work better tomorrow";
+  p.textContent = "this is just for the sidebar, it should work better tomorrow...";
   
 };
 

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap'); /* again */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+hello {
+  background-color: #606613; /* 🥽 */
+}
+
+:root {
+  --white: #eeeeee;
+  --black: #111111;
+  --c1: hsl(160, 71%, 45%); /* puzzls colours for now (change later?) */
+  --c1-light: hsl(160, 85%, 72%);
+  --c1-dark: hsl(160, 90%, 21%);
+  --c2: hsl(15, 71%, 45%);
+  --c2-light: hsl(15, 85%, 72%);
+  --c2-dark: hsl(15, 90%, 21%);
+  --selection: #9cf;
+}
+
+* {
+  font-family: Roboto;
+  text-align: center;
+}
+
+*::selection {
+  background-color: var(--selection);
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: "Roboto Mono";
+  font-size: 14px;
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+}
+
+th {
+  padding: 0.8em;
+  min-height: 2em;
+  border-radius: 100%;
+  background-color: var(--white);
+  transition: all 0.4s ease;
+}
+
+td {
+  padding: 0.8em;
+  min-height: 2em;
+  border-radius: 1.25em;
+  background-color: var(--c1);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+td:hover {
+  filter: saturate(100%) brightness(120%);
+}
+
+td[disabled], td.disabled, td:disabled {
+  border-radius: 100%;
+  pointer-events: none;
+  background-color: var(--white);
+  border: 2px solid var(--c1-light);
+  /* background: repeating-linear-gradient(45deg, var(--c1-light), var(--c1-light) 5px, var(--white) 5px, var(--white) 10px); */ /* no */
+}
