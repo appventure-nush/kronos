@@ -15,10 +15,34 @@ function generate(date) { // genedate(rate)
   const y = wow.getFullYear();
   const m = wow.getMonth()+ +([]+[+!+[]]); // wow!
   const d = wow.getDate();
-  const tarts = (() => {
+  const tarts = (() => { // start
     const _ = new Date(date);
     _.setDate(1);
     return _.getDay();
+  })();
+  const den = (() => { // end
+    switch (m) {
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+        return 31;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        return 30;
+      case 2:  // february >:(
+        // leap 🐸
+        if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+          return 29;
+        } else {
+          return 28;
+        }
+    }
   })();
 
   console.log(y, m, d); // ok looks fine
@@ -34,8 +58,10 @@ function generate(date) { // genedate(rate)
     td = document.createElement("td");
     tr.appendChild(td);
     const number = i - tarts;
-    if (number > 0 && number < 31) {
+    if (number > 0 && number <= den) {
       td.innerHTML = `${number}`;
+    } else {
+      td.classList.add("disabled");
     }
   }
 
@@ -47,8 +73,8 @@ function generate(date) { // genedate(rate)
     td.innerHTML = "mtwtfss"[i];
   }
 
-  h1.innerHTML = "hi"; // hi = h1
-  p.textContent = "this should look better tomorrow";
+  h1.innerHTML = "hi"; // h1 = hi
+  p.textContent = "this should work better tomorrow";
   
 };
 
