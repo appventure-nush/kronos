@@ -71,17 +71,19 @@ function nextMonth(d){
     d.setMonth(0);
     d.setYear(d.getYear() + 1);
   }
-  else{
-    d.setMonth(d.getMonth() + 1)
+  else {
+    d.setMonth(d.getMonth() + 1);
   }
 }
-function prevMonth(d){
-  if (d.getMonth == 0){
+
+function prevMonth(d) {
+  if (d.getMonth === 0) {
     d.setMonth(11);
     d.setYear(d.getYear() - 1);
+    // console.log(d.getFullYear);
   }
-  else{
-    d.setMonth(d.getMonth() - 1)
+  else {
+    d.setMonth(d.getMonth() - 1);
   }
 }
 
@@ -97,8 +99,7 @@ function calendarPrevMonth(e){ //on click prev month
   organizeCalendar(createMonthList(selDate)); 
 }
 
-
-window.onload = function(){
+window.onload = function() {
   console.log('shooty')
     
     // organizeCalendar();

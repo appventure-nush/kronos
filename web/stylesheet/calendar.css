@@ -53,7 +53,6 @@ body {font-family: Verdana, sans-serif;}
 }
 
 .wdlist li {
-
   padding-left: 12px;
   list-style-type: none;
   display: inline-block;
@@ -69,8 +68,8 @@ body {font-family: Verdana, sans-serif;}
   background: #eee;
   margin: 0;
 }
-.days :hover{
-    
+.days:hover {
+  
 }
 
 .days li {
@@ -93,29 +92,35 @@ body {font-family: Verdana, sans-serif;}
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}
 }
-
 @media screen and (max-width: 420px) {
   .weekdays li, .days li {width: 12.5%;}
   .days li .active {padding: 2px;}
 }
-
 @media screen and (max-width: 290px) {
   .weekdays li, .days li {width: 12.2%;}
 }
-.calHead{
-  
-}
 
-#dayList li{
+#dayList li {
   margin-bottom: 0px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-#dayList li:hover{
+#dayList li:hover {
   background-color: #1abc9c;
-} 
+}
+
 .monthHead {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+#yearDisplay {
+  display: inline-block;
+  padding: 1em;
+}
+
+#monthDisplay {
+  display: inline-block;
+  padding: 1em;
 }

@@ -5,36 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="./stylesheet/calendar.css" ></link>
+    <link rel="stylesheet" type="text/css" href="./stylesheet/calendar.css"></link>
     <link rel="stylesheet" type="text/css" href="./stylesheet/nav.css"></link>
-    
 </head>
 <body>
     <!-- <navbar> -->
-        <nav>
-            <ul>
+    <nav>
+        <ul>
 
-            </ul>
-        </nav>
+        </ul>
+    </nav>
     <!-- Calendar here -->
     <div class="calendarContainer" id="mainCalendarContainer">
         <div class="calCon">
-            
+
             <div class="calHead">
                 <div class="yearHead">
-                    <button onclick="calendar"></button>
+                    <button onclick="calendar">&lt;</button>
                     <h3 id="yearDisplay"></h3>
-                    <button onclick="calendar"></button>
+                    <button onclick="calendar">&gt;</button>
                 </div>
                 <div class="monthHead">
-                    <button onclick="calendarPrevMonth()"></button>
+                    <button onclick="calendarPrevMonth()">&lt;</button>
                     <div class="month">
                         <h1 id="monthDisplay"></h1>
                     </div>
-                    <button onclick="calendarNextMonth()"></button>
+                    <button onclick="calendarNextMonth()">&gt;</button>
                 </div>
-                
             </div>
+
             <div class="calBody">
                 <div class="weekdays">
                     <table id="days">
@@ -69,4 +68,9 @@
     <script src="./script/calendar.js"></script>
     
 </body>
+    
+<!-- <script src="./../script/calendar.js"></script> -->
+<!-- <link href="./html/testcalendar.html" rel="import"/> -->
+<!-- <object type="text/html" data="./html/testcalendar.html"></object> -->
+
 </html>

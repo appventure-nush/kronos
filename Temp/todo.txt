@@ -1,10 +1,10 @@
 Get the next and previous buttons working
 Get an actual SVG file for buttons
 Make the buttons stay in position
-Get Calendar to be working
+Get Calendar to be working    < doing this
 Get Microsoft API working
 Get Google API working
 Get Google to approve the API use
 Get Parsing calendars working
-Get UI to work with mobile devices
+Get UI to work with mobile devices    < this?
 Get more customizable UI in the settings
