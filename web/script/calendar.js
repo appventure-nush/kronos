@@ -1,4 +1,5 @@
 // https://www.w3schools.com/jsref/jsref_getday.asp
+
 const date = new Date();
 const selDate = new Date();
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -6,7 +7,6 @@ const daylist = document.getElementById('dayList'); // da li??????????
 const monthDisplay = document.getElementById('monthDisplay');
 const yearDisplay = document.getElementById('yearDisplay');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
 
 let getMFWD = (d) => { // gets the weekday of the first day of the month
   rval = new Date(d);
@@ -77,24 +77,22 @@ function prevMonth(d) {
   }
 }
 
-function calendarNextMonth(e){
-  // console.log("clicked");
+function calendarNextMonth(e) {
   nextMonth(selDate);
   daylist.innerHTML = ``;
   organizeCalendar();
 }
 
-function calendarPrevMonth(e){
-  // console.log("clicked");
+function calendarPrevMonth(e) {
   prevMonth(selDate);
   daylist.innerHTML = ``;
   organizeCalendar(); 
 }
 
 window.onload = function() {
-  console.log('shooty')
+  console.log("shooty");
   for(let i = 0; i < getMFWD(date);i++){
-    daylist.innerHTML += `<li></li>`;
+    daylist.innerHTML += `<li></li>`; // da
   }
   organizeCalendar();
   // monthDisplay.innerText = months;
