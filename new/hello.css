@@ -40,7 +40,7 @@ table {
 }
 
 th {
-  padding: 0.8em;
+  padding: 0.7em;
   min-height: 2em;
   border-radius: 100%;
   background-color: var(--white);
@@ -48,7 +48,7 @@ th {
 }
 
 td {
-  padding: 0.8em;
+  padding: 0.7em;
   min-height: 2em;
   border-radius: 1.25em;
   background-color: var(--c1);
@@ -66,4 +66,32 @@ td[disabled], td.disabled, td:disabled {
   background-color: var(--white);
   border: 2px solid var(--c1-light);
   /* background: repeating-linear-gradient(45deg, var(--c1-light), var(--c1-light) 5px, var(--white) 5px, var(--white) 10px); */ /* no */
+}
+
+aside {
+  width: 22em;
+  margin: 0;
+  padding: 1em 1em;
+  float: left;
+  clear: both;
+  position: relative;
+}
+
+main {
+  display: inline-block;
+  margin: 0;
+  padding: 1em 1em;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin, *[spin] {
+  animation: spin 2s linear infinite;
 }

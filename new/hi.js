@@ -4,6 +4,7 @@ function generate(date) { // genedate(rate)
   
   // const spam yay
   const sidebar = document.querySelector("aside"); // not using IDs for fun
+  const main = document.querySelector("main");
   const div = document.querySelector("div");
   const h1 = document.querySelector("h1");
   const p = document.querySelector("p");
@@ -63,6 +64,7 @@ function generate(date) { // genedate(rate)
     } else {
       td.classList.add("disabled");
     }
+    td.classList.add("spin");
   }
 
   tr = document.createElement("tr");
@@ -73,8 +75,9 @@ function generate(date) { // genedate(rate)
     td.innerHTML = "mtwtfss"[i];
   }
 
-  h1.innerHTML = "hi"; // h1 = hi
-  p.textContent = "this is just for the sidebar, it should work better tomorrow...";
+  h1.textContent = "hi"; // h1 = hi
+  p.textContent = "this is the sidebar";
+  div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsum\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is (always) 4 letters :)
   
 };
 
