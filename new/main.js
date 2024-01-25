@@ -8,9 +8,9 @@ function generate(date) { // genedate(rate)
   const div = document.querySelector("div");
   const h1 = document.querySelector("h1");
   const p = document.querySelector("p");
-  const table = document.querySelector("table");
-  const thead = document.querySelector("thead");
-  const tbody = document.querySelector("tbody");
+  const side_table = document.querySelector("aside table");
+  const side_thead = document.querySelector("aside thead");
+  const side_tbody = document.querySelector("aside tbody");
 
   const wow = new Date(date);
   const y = wow.getFullYear();
@@ -38,7 +38,7 @@ function generate(date) { // genedate(rate)
         return 30;
       case 2:  // february >:(
         // leap 🐸
-        if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        if ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) {
           return 29;
         } else {
           return 28;
@@ -54,7 +54,7 @@ function generate(date) { // genedate(rate)
     let y = Math.floor(i / 7);
     if (!x) { // remember to eventually replace with x === 0
       tr = document.createElement("tr");
-      tbody.appendChild(tr);
+      side_tbody.appendChild(tr);
     }
     td = document.createElement("td");
     tr.appendChild(td);
@@ -68,7 +68,7 @@ function generate(date) { // genedate(rate)
   }
 
   tr = document.createElement("tr");
-  thead.appendChild(tr);
+  side_thead.appendChild(tr);
   for (let i = 0; i < 7; i++) {
     td = document.createElement("th"); // not actually td shhh
     tr.appendChild(td);
@@ -77,7 +77,7 @@ function generate(date) { // genedate(rate)
 
   h1.textContent = "hi"; // h1 = hi
   p.textContent = "this is the sidebar";
-  div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsum\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is (always) 4 letters :)
+  div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsusm\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is (always) 4 letters :)
   
 };
 
