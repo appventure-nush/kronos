@@ -1,13 +1,16 @@
 // hi
 
+const now = new Date();
+
 function generate(date) { // genedate(rate)
   
   // const spam yay
   const sidebar = document.querySelector("aside"); // not using IDs for fun
   const main = document.querySelector("main");
-  const div = document.querySelector("div");
+  const div = document.querySelector("main div");
   const h1 = document.querySelector("h1");
   const p = document.querySelector("p");
+  const side_div = document.querySelector("aside div");
   const side_table = document.querySelector("aside table");
   const side_thead = document.querySelector("aside thead");
   const side_tbody = document.querySelector("aside tbody");
@@ -21,32 +24,19 @@ function generate(date) { // genedate(rate)
     _.setDate(1);
     return _.getDay();
   })();
-  const den = (() => { // end
-    switch (m) {
-      case 1:
-      case 3:
-      case 5:
-      case 7:
-      case 8:
-      case 10:
-      case 12:
-        return 31;
-      case 4:
-      case 6:
-      case 9:
-      case 11:
-        return 30;
-      case 2:  // february >:(
-        // leap 🐸
-        if ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) {
-          return 29;
-        } else {
-          return 28;
-        }
-    }
-  })();
+  const den = [0, 31, 28 + ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m]; // 1 line?
+  
+  const m_string = ["null 💀", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][m];
+  side_div.innerHTML = `
+    <input type="button" value="←" class="left">
+    <h1 style="display: inline-block; min-width: 7.5em;">${m_string} ${y}</h1>
+    <input type="button" value="→" class="right">
+  `;
 
   console.log(y, m, d); // ok looks fine
+
+  side_thead.innerHTML = "";
+  side_tbody.innerHTML = "";
 
   let tr, td;
   for (let i = 0; i < 35; i++) {
@@ -75,12 +65,23 @@ function generate(date) { // genedate(rate)
     td.innerHTML = "mtwtfss"[i];
   }
 
-  h1.textContent = "hi"; // h1 = hi
+  document.querySelector("input[type=button].left").addEventListener("click", function(event) {
+    now.setDate(1);
+    now.setMonth(now.getMonth() - 1);
+    generate(now);
+  });
+
+  document.querySelector("input[type=button].right").addEventListener("click", function(event) {
+    now.setDate(1);
+    now.setMonth(now.getMonth() + 1);
+    generate(now);
+  });
+
   p.textContent = "this is the sidebar";
   div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsusm\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is (always) 4 letters :)
   
 };
 
 window.addEventListener("load", function(event) {
-  generate(new Date()); // for now
+  generate(now); // for now
 });

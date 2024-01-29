@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap'); /* again */
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
 hello {
   background-color: #606613; /* 🥽 */
 }
 
 :root {
-  --white: #eeeeee;
-  --black: #111111;
+  --white: #eee;
+  --lesswhite: #abc;
+  --grey: #999;
+  --black: #111;
   --c1: hsl(160, 71%, 45%); /* puzzls colours for now (change later?) */
   --c1-light: hsl(160, 85%, 72%);
   --c1-dark: hsl(160, 90%, 21%);
@@ -21,10 +22,12 @@ hello {
 * {
   font-family: Roboto;
   text-align: center;
+  box-sizing: border-box;
 }
 
 *::selection {
   background-color: var(--selection);
+  animation: spin 0.1s linear infinite; /* this doesn't do anything :( */
 }
 
 body {
@@ -69,7 +72,7 @@ td[disabled], td.disabled, td:disabled {
 }
 
 aside {
-  width: 22em;
+  width: 23em;
   margin: 0;
   padding: 1em 1em;
   float: left;
@@ -82,6 +85,45 @@ main {
   margin: 0;
   padding: 1em 1em;
 }
+
+input[type=button], button {
+  display: inline-block;
+  padding: 0.5em 0.8em;
+  margin: 0 0.8em;
+  background-color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 0.5em;
+  transition: 0.3s all ease;
+}
+
+input[type=button]:hover, button:hover {
+  background-color: var(--grey);
+  border: 2px solid var(--grey);
+  
+}
+
+/*
+arrow {
+  display: inline-block;
+  padding: 0.5em;
+  border: solid var(--black);
+  border-width: 0 3px 3px 0;
+}
+arrow.up {
+  transform: rotate(-135deg);
+}
+arrow.down {
+  transform: rotate(45deg);
+}
+arrow.left {
+  transform: rotate(135deg);
+}
+arrow.right {
+  transform: rotate(-45deg);
+}
+*/
+
+/* everything after this is for fun */
 
 @keyframes spin {
   from {
