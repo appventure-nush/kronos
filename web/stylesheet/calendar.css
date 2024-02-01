@@ -124,3 +124,6 @@ body {font-family: Verdana, sans-serif;}
   display: inline-block;
   padding: 1em;
 }
+#todayBtn{
+  background-color: white;
+}
