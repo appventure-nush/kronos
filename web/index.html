@@ -20,10 +20,15 @@
         <div class="calCon">
 
             <div class="calHead">
+                <button id="todayBtn">
+                    <span onclick="calendarToday()">Today</span> 
+                    <!-- make it look nice -->
+                </button>
                 <div class="yearHead">
-                    <button onclick="calendar">&lt;</button>
-                    <h3 id="yearDisplay"></h3>
-                    <button onclick="calendar">&gt;</button>
+                    <!-- might remove the year button and place it in a dropdown like google calendar since it's a feature that prob won't be used often -->
+                    <!-- <button onclick="calendar">&lt;</button> -->
+                    <h2 id="yearDisplay"></h2>
+                    <!-- <button onclick="calendar">&gt;</button> -->
                 </div>
                 <div class="monthHead">
                     <button onclick="calendarPrevMonth()">&lt;</button>

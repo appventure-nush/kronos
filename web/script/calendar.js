@@ -86,7 +86,13 @@ function prevMonth(d) {
     d.setMonth(d.getMonth() - 1);
   }
 }
+// function nextYear(d){
+//   d.setYear(d.getYear() + 1)
 
+// }
+// function prevYear(d){
+//   d.setYear(d.getYear() - 1)
+// }
 function calendarNextMonth(e){// on click next month
   nextMonth(selDate);
   clear();
@@ -98,7 +104,11 @@ function calendarPrevMonth(e){ //on click prev month
   clear();
   organizeCalendar(createMonthList(selDate)); 
 }
-
+function calendarToday(e){
+  selDate = new Date()//Today
+  clear()
+  organizeCalendar(createMonthList(selDate))
+}
 window.onload = function() {
   console.log('shooty')
     
@@ -106,6 +116,7 @@ window.onload = function() {
   organizeCalendar(createMonthList(selDate))
     // monthDisplay.innerText = months
 }
+
 
 
 
