@@ -13,6 +13,7 @@ hello {
   --c1: hsl(160, 71%, 45%); /* puzzls colours for now (change later?) */
   --c1-light: hsl(160, 85%, 72%);
   --c1-dark: hsl(160, 90%, 21%);
+  --c1-transparent: hsla(160, 71%, 45%, 20%);
   --c2: hsl(15, 71%, 45%);
   --c2-light: hsl(15, 85%, 72%);
   --c2-dark: hsl(15, 90%, 21%);
@@ -42,7 +43,7 @@ table {
   margin: 0 auto;
 }
 
-th {
+aside th {
   padding: 0.7em;
   min-height: 2em;
   border-radius: 100%;
@@ -50,25 +51,40 @@ th {
   transition: all 0.4s ease;
 }
 
-td {
+aside td {
   padding: 0.7em;
   min-height: 2em;
+  min-width: 2em;
   border-radius: 1.25em;
-  background-color: var(--c1);
+  background-color: var(--c1-transparent);
   cursor: pointer;
   transition: all 0.4s ease;
 }
 
-td:hover {
+aside td:hover {
   filter: saturate(100%) brightness(120%);
 }
 
-td[disabled], td.disabled, td:disabled {
+aside td[disabled], td.disabled, td:disabled {
   border-radius: 100%;
   pointer-events: none;
   background-color: var(--white);
   border: 2px solid var(--c1-light);
   /* background: repeating-linear-gradient(45deg, var(--c1-light), var(--c1-light) 5px, var(--white) 5px, var(--white) 10px); */ /* no */
+}
+
+aside td.today {
+  background-color: var(--c1);
+}
+
+aside div.box {
+  position: absolute;
+  display: block;
+  height: 2.8em;
+  width: 2.8em;
+  content: "";
+  border: 2px solid var(--black);
+  transition: all 0.4s ease;
 }
 
 aside {
@@ -135,5 +151,5 @@ arrow.right {
 }
 
 .spin, *[spin] {
-  animation: spin 2s linear infinite;
+  animation: spin 0.5s linear infinite;
 }

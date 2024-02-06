@@ -1,6 +1,11 @@
 // hi
 
 const now = new Date();
+const v = {
+  sidebar: {
+    selected: null
+  }
+};
 
 function generate(date) { // genedate(rate)
   
@@ -10,7 +15,7 @@ function generate(date) { // genedate(rate)
   const div = document.querySelector("main div");
   const h1 = document.querySelector("h1");
   const p = document.querySelector("p");
-  const side_div = document.querySelector("aside div");
+  const side_div = document.querySelector("aside > div");
   const side_table = document.querySelector("aside table");
   const side_thead = document.querySelector("aside thead");
   const side_tbody = document.querySelector("aside tbody");
@@ -31,7 +36,9 @@ function generate(date) { // genedate(rate)
     <input type="button" value="←" class="left">
     <h1 style="display: inline-block; min-width: 7.5em;">${m_string} ${y}</h1>
     <input type="button" value="→" class="right">
+    <div style="display: none" class="box"></div>
   `;
+  const side_box = document.querySelector("aside div.box");
 
   console.log(y, m, d); // ok looks fine
 
@@ -54,7 +61,16 @@ function generate(date) { // genedate(rate)
     } else {
       td.classList.add("disabled");
     }
-    td.classList.add("spin");
+    if (number === d) {
+      td.classList.add("today");
+      td.classList.add("spin");
+    }
+    const the_td = td;
+    the_td.addEventListener("click", (_) => {
+      side_box.style.left = `calc(${the_td.getBoundingClientRect().left}px - 0.7em)`;
+      side_box.style.top = `calc(${the_td.getBoundingClientRect().top}px - 0.7em)`;
+      side_box.style.display = "block";
+    });
   }
 
   tr = document.createElement("tr");
