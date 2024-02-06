@@ -13,10 +13,11 @@ hello {
   --c1: hsl(160, 71%, 45%); /* puzzls colours for now (change later?) */
   --c1-light: hsl(160, 85%, 72%);
   --c1-dark: hsl(160, 90%, 21%);
-  --c1-transparent: hsla(160, 71%, 45%, 20%);
+  --c1-transparent: 160, 71%, 45%;
   --c2: hsl(15, 71%, 45%);
   --c2-light: hsl(15, 85%, 72%);
   --c2-dark: hsl(15, 90%, 21%);
+  --c2-transparent: 15, 71%, 45%;
   --selection: #9cf;
 }
 
@@ -44,32 +45,33 @@ table {
 }
 
 aside th {
-  padding: 0.7em;
   min-height: 2em;
+  min-width: 2em;
+  padding: 0.7em;
   border-radius: 100%;
   background-color: var(--white);
-  transition: all 0.4s ease;
+  transition: all 0.4s ease-out;
 }
 
 aside td {
-  padding: 0.7em;
   min-height: 2em;
   min-width: 2em;
+  padding: 0.7em;
   border-radius: 1.25em;
-  background-color: var(--c1-transparent);
+  background-color: hsla(var(--c1-transparent), 0.2);
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.4s ease-out;
 }
 
-aside td:hover {
+aside td:hover:not(.disabled) {
   filter: saturate(100%) brightness(120%);
 }
 
 aside td[disabled], td.disabled, td:disabled {
-  border-radius: 100%;
-  pointer-events: none;
-  background-color: var(--white);
+  padding: calc(0.7em - 2px);
   border: 2px solid var(--c1-light);
+  background-color: var(--white);
+  color: transparent;
   /* background: repeating-linear-gradient(45deg, var(--c1-light), var(--c1-light) 5px, var(--white) 5px, var(--white) 10px); */ /* no */
 }
 
@@ -80,17 +82,22 @@ aside td.today {
 aside div.box {
   position: absolute;
   display: block;
+  content: "";
   height: 2.8em;
   width: 2.8em;
-  content: "";
   border: 2px solid var(--black);
-  transition: all 0.4s ease;
+  pointer-events: none; /* important so that the moving boxes don't block the cursor */
+  transition: all 0.4s ease-out;
+}
+
+aside div.box2 {
+  border: 2px solid hsla(var(--c1-transparent), 0.4);
 }
 
 aside {
-  width: 23em;
+  width: 23em; /* weird number that works */
   margin: 0;
-  padding: 1em 1em;
+  padding: 1em;
   float: left;
   clear: both;
   position: relative;
@@ -99,17 +106,17 @@ aside {
 main {
   display: inline-block;
   margin: 0;
-  padding: 1em 1em;
+  padding: 1em;
 }
 
 input[type=button], button {
   display: inline-block;
-  padding: 0.5em 0.8em;
   margin: 0 0.8em;
-  background-color: var(--white);
+  padding: 0.5em 0.8em;
   border: 2px solid var(--white);
   border-radius: 0.5em;
-  transition: 0.3s all ease;
+  background-color: var(--white);
+  transition: 0.3s all ease-out;
 }
 
 input[type=button]:hover, button:hover {
@@ -117,27 +124,6 @@ input[type=button]:hover, button:hover {
   border: 2px solid var(--grey);
   
 }
-
-/*
-arrow {
-  display: inline-block;
-  padding: 0.5em;
-  border: solid var(--black);
-  border-width: 0 3px 3px 0;
-}
-arrow.up {
-  transform: rotate(-135deg);
-}
-arrow.down {
-  transform: rotate(45deg);
-}
-arrow.left {
-  transform: rotate(135deg);
-}
-arrow.right {
-  transform: rotate(-45deg);
-}
-*/
 
 /* everything after this is for fun */
 
@@ -150,6 +136,6 @@ arrow.right {
   }
 }
 
-.spin, *[spin] {
-  animation: spin 0.5s linear infinite;
+spin, .spin, *[spin] {
+  animation: spin 0.1s linear infinite;
 }

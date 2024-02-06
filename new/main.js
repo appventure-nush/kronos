@@ -1,11 +1,7 @@
 // hi
 
 const now = new Date();
-const v = {
-  sidebar: {
-    selected: null
-  }
-};
+const the_date = new Date();
 
 function generate(date) { // genedate(rate)
   
@@ -24,6 +20,7 @@ function generate(date) { // genedate(rate)
   const y = wow.getFullYear();
   const m = wow.getMonth()+ +([]+[+!+[]]); // wow!
   const d = wow.getDate();
+  const today_number = (now.getFullYear() === y && now.getMonth() === wow.getMonth()) ? now.getDate() : -192119;
   const tarts = (() => { // start
     const _ = new Date(date);
     _.setDate(1);
@@ -36,9 +33,11 @@ function generate(date) { // genedate(rate)
     <input type="button" value="←" class="left">
     <h1 style="display: inline-block; min-width: 7.5em;">${m_string} ${y}</h1>
     <input type="button" value="→" class="right">
-    <div style="display: none" class="box"></div>
+    <div style="left: -100px; top: -100px;" class="box"></div>
+    <div style="left: -100px; top: -100px;" class="box box2"></div>
   `;
   const side_box = document.querySelector("aside div.box");
+  const side_box2 = document.querySelector("aside div.box2");
 
   console.log(y, m, d); // ok looks fine
 
@@ -59,17 +58,20 @@ function generate(date) { // genedate(rate)
     if (number > 0 && number <= den) {
       td.innerHTML = `${number}`;
     } else {
+      td.innerHTML = "0";
       td.classList.add("disabled");
     }
-    if (number === d) {
+    if (number === today_number) {
       td.classList.add("today");
-      td.classList.add("spin");
     }
     const the_td = td;
+    the_td.addEventListener("mouseover", (_) => {
+      side_box2.style.left = `calc(${the_td.getBoundingClientRect().left + window.scrollX}px - 0.7em)`;
+      side_box2.style.top = `calc(${the_td.getBoundingClientRect().top + window.scrollY}px - 0.7em)`;
+    });
     the_td.addEventListener("click", (_) => {
-      side_box.style.left = `calc(${the_td.getBoundingClientRect().left}px - 0.7em)`;
-      side_box.style.top = `calc(${the_td.getBoundingClientRect().top}px - 0.7em)`;
-      side_box.style.display = "block";
+      side_box.style.left = `calc(${the_td.getBoundingClientRect().left + window.scrollX}px - 0.7em)`;
+      side_box.style.top = `calc(${the_td.getBoundingClientRect().top + window.scrollY}px - 0.7em)`;
     });
   }
 
@@ -79,25 +81,26 @@ function generate(date) { // genedate(rate)
     td = document.createElement("th"); // not actually td shhh
     tr.appendChild(td);
     td.innerHTML = "mtwtfss"[i];
+    td.classList.add("spin");
   }
 
   document.querySelector("input[type=button].left").addEventListener("click", function(event) {
-    now.setDate(1);
-    now.setMonth(now.getMonth() - 1);
-    generate(now);
+    date.setDate(1);
+    date.setMonth(date.getMonth() - 1);
+    generate(date);
   });
 
   document.querySelector("input[type=button].right").addEventListener("click", function(event) {
-    now.setDate(1);
-    now.setMonth(now.getMonth() + 1);
-    generate(now);
+    date.setDate(1);
+    date.setMonth(date.getMonth() + 1);
+    generate(date);
   });
 
   p.textContent = "this is the sidebar";
-  div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsusm\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is (always) 4 letters :)
+  div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsusm\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is 4 letters :)
   
 };
 
 window.addEventListener("load", function(event) {
-  generate(now); // for now
+  generate(the_date); // still for now
 });
