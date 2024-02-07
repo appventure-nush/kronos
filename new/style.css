@@ -85,6 +85,7 @@ aside div.box {
   content: "";
   height: 2.8em;
   width: 2.8em;
+  z-index: 1000;
   border: 2px solid var(--black);
   pointer-events: none; /* important so that the moving boxes don't block the cursor */
   transition: all 0.4s ease-out;
@@ -122,7 +123,6 @@ input[type=button], button {
 input[type=button]:hover, button:hover {
   background-color: var(--grey);
   border: 2px solid var(--grey);
-  
 }
 
 /* everything after this is for fun */
@@ -137,5 +137,5 @@ input[type=button]:hover, button:hover {
 }
 
 spin, .spin, *[spin] {
-  animation: spin 0.1s linear infinite;
+  animation: spin 1s linear infinite;
 }

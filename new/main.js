@@ -3,7 +3,34 @@
 const now = new Date();
 const the_date = new Date();
 
-function generate(date) { // genedate(rate)
+
+function init() {
+
+  const side_div = document.querySelector("aside > div");
+  side_div.innerHTML = `
+    <input type="button" value="←" class="left">
+    <h1 style="display: inline-block; min-width: 7.5em;"></h1>
+    <input type="button" value="→" class="right">
+    <div style="left: -100px; top: -100px;" class="box"></div>
+    <div style="left: -100px; top: -100px;" class="box box2"></div>
+  `;
+
+  document.querySelector("input[type=button].left").addEventListener("click", function(event) {
+    the_date.setDate(1);
+    the_date.setMonth(the_date.getMonth() - 1);
+    generate(the_date);
+  });
+
+  document.querySelector("input[type=button].right").addEventListener("click", function(event) {
+    the_date.setDate(1);
+    the_date.setMonth(the_date.getMonth() + 1);
+    generate(the_date);
+  });
+
+}
+
+
+function generate(date, selecting = false) { // genedate(rate)
   
   // const spam yay
   const sidebar = document.querySelector("aside"); // not using IDs for fun
@@ -11,7 +38,8 @@ function generate(date) { // genedate(rate)
   const div = document.querySelector("main div");
   const h1 = document.querySelector("h1");
   const p = document.querySelector("p");
-  const side_div = document.querySelector("aside > div");
+  const side_box = document.querySelector("aside div.box");
+  const side_box2 = document.querySelector("aside div.box2");
   const side_table = document.querySelector("aside table");
   const side_thead = document.querySelector("aside thead");
   const side_tbody = document.querySelector("aside tbody");
@@ -29,17 +57,15 @@ function generate(date) { // genedate(rate)
   const den = [0, 31, 28 + ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m]; // 1 line?
   
   const m_string = ["null 💀", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][m];
-  side_div.innerHTML = `
-    <input type="button" value="←" class="left">
-    <h1 style="display: inline-block; min-width: 7.5em;">${m_string} ${y}</h1>
-    <input type="button" value="→" class="right">
-    <div style="left: -100px; top: -100px;" class="box"></div>
-    <div style="left: -100px; top: -100px;" class="box box2"></div>
-  `;
-  const side_box = document.querySelector("aside div.box");
-  const side_box2 = document.querySelector("aside div.box2");
+  h1.innerHTML = `${m_string} ${y}`;
+  if (!selecting) {
+    // side_box.style.left = "-100px";
+    // side_box2.style.left = "-100px";
+    side_box.style.top = "-100px";
+    side_box2.style.top = "-100px";
+  }
 
-  console.log(y, m, d); // ok looks fine
+  // console.log(y, m, d); // ok looks fine
 
   side_thead.innerHTML = "";
   side_tbody.innerHTML = "";
@@ -55,7 +81,8 @@ function generate(date) { // genedate(rate)
     td = document.createElement("td");
     tr.appendChild(td);
     const number = i - tarts;
-    if (number > 0 && number <= den) {
+    const enabled = number > 0 && number <= den;
+    if (enabled) {
       td.innerHTML = `${number}`;
     } else {
       td.innerHTML = "0";
@@ -65,14 +92,23 @@ function generate(date) { // genedate(rate)
       td.classList.add("today");
     }
     const the_td = td;
-    the_td.addEventListener("mouseover", (_) => {
+    const mouseover_fn = (_) => {
       side_box2.style.left = `calc(${the_td.getBoundingClientRect().left + window.scrollX}px - 0.7em)`;
       side_box2.style.top = `calc(${the_td.getBoundingClientRect().top + window.scrollY}px - 0.7em)`;
-    });
-    the_td.addEventListener("click", (_) => {
+    };
+    const click_fn = (_) => {
       side_box.style.left = `calc(${the_td.getBoundingClientRect().left + window.scrollX}px - 0.7em)`;
       side_box.style.top = `calc(${the_td.getBoundingClientRect().top + window.scrollY}px - 0.7em)`;
-    });
+      if (!enabled) {
+        date.setDate(number);
+        generate(date, true);
+      }
+    }
+    the_td.addEventListener("mouseover", mouseover_fn);
+    the_td.addEventListener("click", click_fn);
+    if (number === d && selecting) {
+      setTimeout(click_fn, 100);
+    }
   }
 
   tr = document.createElement("tr");
@@ -84,23 +120,13 @@ function generate(date) { // genedate(rate)
     td.classList.add("spin");
   }
 
-  document.querySelector("input[type=button].left").addEventListener("click", function(event) {
-    date.setDate(1);
-    date.setMonth(date.getMonth() - 1);
-    generate(date);
-  });
-
-  document.querySelector("input[type=button].right").addEventListener("click", function(event) {
-    date.setDate(1);
-    date.setMonth(date.getMonth() + 1);
-    generate(date);
-  });
-
   p.textContent = "this is the sidebar";
   div.innerHTML = "lorem\n\n\n\n\n\n\n\n\n\n\n\nipsusm\n\n\n\n\n\n\n\n\n<br>\n\n\n\nlarge\ncalendar"; // answer is 4 letters :)
   
-};
+}
+
 
 window.addEventListener("load", function(event) {
-  generate(the_date); // still for now
+  init();
+  generate(the_date, false); // still for now
 });
