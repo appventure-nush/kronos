@@ -17,6 +17,7 @@ let getMFWD = (d) =>{ //gets the weekday of the first day of the month
 function organizeCalendar(date){ //put everything into tables
   let weekcounter = getMFWD(date);
   let row = days.insertRow()
+  row.classList.add('dayrow');
   let cell;
   let prev = new Date(date);
   prevMonth(prev)
