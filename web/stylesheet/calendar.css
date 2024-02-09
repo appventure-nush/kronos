@@ -114,7 +114,12 @@ body {font-family: Verdana, sans-serif;}
   flex-direction: row;
   justify-content: center;
 }
-
+.calPlusDay{
+  color: #999;
+}
+.calMinusDay{
+  color: #999;
+}
 #yearDisplay {
   display: inline-block;
   padding: 1em;
@@ -126,7 +131,4 @@ body {font-family: Verdana, sans-serif;}
 }
 #todayBtn{
   background-color: white;
-}
-#calPlusDay{
-  
 }
