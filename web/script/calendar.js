@@ -9,29 +9,43 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const days = document.getElementById('days')
 
 let getMFWD = (d) =>{ //gets the weekday of the first day of the month
-    let rval
-    rval = new Date(d)
+    let rval = new Date(d)
     rval.setDate(1)
-    console.log(rval.getDate())
     return rval.getDay()
 }
 
-function organizeCalendar(monthlist){ //put everything into tables
-  let mfwd = getMFWD(selDate);
-  let weekcounter = -1;
+function organizeCalendar(date){ //put everything into tables
+  let weekcounter = getMFWD(date);
   let row = days.insertRow()
-  row.classList.add('dayrow');
-  monthlist.forEach(element => { //loop to add days
-    weekcounter++;
-    let cell;
+  let cell;
+  let prev = new Date(date);
+  prevMonth(prev)
+  let minus = getDaysInMonth(prev) - getMFWD(date)
+
+
+  for (let i = 0; i < getMFWD(date); i++){    
+    minus++;
+    cell = row.insertCell()
+    cell.innerHTML = minus;
+    cell.classList.add('calDay','calMinusDay')
+  } 
+  for(let d = 1; d <= getDaysInMonth(date);     d++) /*<-- My grade in CS (real)*/{
     if (weekcounter == 7) {
       row = days.insertRow()
       row.classList.add('dayrow');
       weekcounter = 0
     }
-    row.insertCell().innerHTML = element
+    weekcounter++;
+    cell = row.insertCell()
+    cell.innerHTML = d
+    cell.classList.add('calDay')
+  }
+  for(let a = 1; a <= 7 - weekcounter; a++){
+    cell = row.insertCell()
+    cell.innerHTML = a;
+    cell.classList.add('calDay','calPlusDay')//amagus
     
-  });
+  }
   monthDisplay.innerHTML = months[selDate.getMonth()]
   yearDisplay.innerHTML = selDate.getFullYear();
 }
@@ -45,14 +59,22 @@ function clear(){ //clears the table
 }
 
 function createMonthList(date){ //creates a month of dates
-  let monthlist = []
-  let daycounter = 0
+//there is probably a better way to do this 
+//there was
+// I have the stupid
+  
+  let minus = getDaysInMonth(prevMonth(new Date(prevDate))) + 1 - getMFWD(date)
+  
+
   for (let i = 0; i < getMFWD(date); i++){
-    monthlist.push('')
+    monthlist.push(minus)
+    minus++;  
   }
+  
   for (let i = 1; i <= getDaysInMonth(date); i++){
     monthlist.push(i)
   }
+  
   return monthlist;
 }
 
@@ -96,24 +118,24 @@ function prevMonth(d) {
 function calendarNextMonth(e){// on click next month
   nextMonth(selDate);
   clear();
-  organizeCalendar(createMonthList(selDate));
+  organizeCalendar(selDate);
 }
 function calendarPrevMonth(e){ //on click prev month
   prevMonth(selDate);
 
   clear();
-  organizeCalendar(createMonthList(selDate)); 
+  organizeCalendar(selDate); 
 }
 function calendarToday(e){
   selDate = new Date()//Today
   clear()
-  organizeCalendar(createMonthList(selDate))
+  organizeCalendar(selDate)
 }
 window.onload = function() {
-  console.log('shooty')
+
     
     // organizeCalendar();
-  organizeCalendar(createMonthList(selDate))
+  organizeCalendar(selDate)
     // monthDisplay.innerText = months
 }
 
