@@ -68,9 +68,9 @@ body {font-family: Verdana, sans-serif;}
   background: #eee;
   margin: 0;
 }
-.days:hover {
+/* .days:hover {
   
-}
+} */
 
 .days li { /* da li? */
   list-style-type: none;
@@ -110,9 +110,19 @@ body {font-family: Verdana, sans-serif;}
 }
 
 .monthHead {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center; */
+  position: fixed;
+    top: 140px; /* Adjust top position as needed */
+    left: 50%; /* Position in the center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px; /* Adjust width as needed */
+    padding: 10px; /* Add padding for better appearance */
+    z-index: 1000;
 }
 .calPlusDay{
   color: #999;
@@ -131,6 +141,7 @@ body {font-family: Verdana, sans-serif;}
 #monthDisplay {
   display: inline-block;
   padding: 1em;
+  
 }
 #todayBtn{
   background-color: white;
