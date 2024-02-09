@@ -120,7 +120,7 @@ body {font-family: Verdana, sans-serif;}
 .calMinusDay{
   color: #999;
 }
-.today{
+.todayDay {
   background-color: #1abc9c;
 }
 #yearDisplay {

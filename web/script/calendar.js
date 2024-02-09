@@ -1,5 +1,5 @@
 //https://www.w3schools.com/jsref/jsref_getday.asp
-
+const today = new Date()
 let selDate = new Date();
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const monthDisplay = document.getElementById('monthDisplay')
@@ -22,7 +22,7 @@ function organizeCalendar(date){ //put everything into tables
   let prev = new Date(date);
   prevMonth(prev)
   let minus = getDaysInMonth(prev) - getMFWD(date)
-
+  let thisMonth = date.getMonth() == today.getMonth() && today.getFullYear() == date.getFullYear()
 
   for (let i = 0; i < getMFWD(date); i++){    
     minus++;
@@ -30,7 +30,7 @@ function organizeCalendar(date){ //put everything into tables
     cell.innerHTML = minus;
     cell.classList.add('calDay','calMinusDay')
   } 
-  for(let d = 1; d <= getDaysInMonth(date);     d++) /*<-- My grade in CS (real)*/{
+  for(let d = 1; d <= getDaysInMonth(date);     d++)/*<-- My grade in CS (real)*/{
     if (weekcounter == 7) {
       row = days.insertRow()
       row.classList.add('dayrow');
@@ -39,7 +39,7 @@ function organizeCalendar(date){ //put everything into tables
     weekcounter++;
     cell = row.insertCell()
     cell.innerHTML = d
-    cell.classList.add('calDay')
+    thisMonth && d==today.getDate() ?cell.classList.add('calDay', 'todayDay') : cell.classList.add('calDay')
   }
   for(let a = 1; a <= 7 - weekcounter; a++){
     cell = row.insertCell()
@@ -59,25 +59,25 @@ function clear(){ //clears the table
   })
 }
 
-function createMonthList(date){ //creates a month of dates
-//there is probably a better way to do this 
-//there was
-// I have the stupid
+// function createMonthList(date){ //creates a month of dates <-- WTF was I even saying I am drunk frfr
+// //there is probably a better way to do this 
+// //there was
+// // I have the stupid
   
-  let minus = getDaysInMonth(prevMonth(new Date(prevDate))) + 1 - getMFWD(date)
+//   let minus = getDaysInMonth(prevMonth(new Date(prevDate))) + 1 - getMFWD(date)
   
 
-  for (let i = 0; i < getMFWD(date); i++){
-    monthlist.push(minus)
-    minus++;  
-  }
+//   for (let i = 0; i < getMFWD(date); i++){
+//     monthlist.push(minus)
+//     minus++;  
+//   }
   
-  for (let i = 1; i <= getDaysInMonth(date); i++){
-    monthlist.push(i)
-  }
+//   for (let i = 1; i <= getDaysInMonth(date); i++){
+//     monthlist.push(i)
+//   }
   
-  return monthlist;
-}
+//   return monthlist;
+// }
 
 
 function getDaysInMonth(date) { // Get the year and month from the Date object
